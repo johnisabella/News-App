@@ -1,0 +1,21 @@
+<h2>Latest News from NPR</h2>
+
+<div class="articles">
+<ul>
+  {{#each Article}}
+  {{/each}}
+</ul>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+// Grab the articles as a json
+$.getJSON("/articles", function(data) {
+  // For each one
+  for (var i = 0; i < data.length; i++) {
+    // Display the apropos information on the page
+    $("#articles").append("<p data-id='" + data[i].headline + "'>" + data[i].summary + "<br />" + data[i].url + "</p>");
+  }
+});
+</script>
